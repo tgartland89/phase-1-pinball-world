@@ -3,6 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(r => r.json())
       .then(data => {
         let gameListNav = document.querySelector(".game-list");
+        let firstGame = data[0];
+
+        let detailImage = document.getElementById("detail-image")
+        let detailTitle = document.getElementById("detail-title")
+        let detailHighScore = document.getElementById("detail-high-score")
+
+        detailImage.src = firstGame.image
+        detailTitle.textContent = firstGame.name
+        detailHighScore.textContent = firstGame.high_score
         
         data.forEach(game => {
           let gameName = game.name;
