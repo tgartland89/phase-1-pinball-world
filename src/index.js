@@ -5,16 +5,31 @@ document.addEventListener("DOMContentLoaded", () => {
       let gameListNav = document.querySelector(".game-list");
       let gameDetailsSection = document.querySelector(".game-details");
       let gameItems = [];
+      let highScoreForm = document.getElementById("high-score-form");
+
+  highScoreForm.addEventListener("submit", event => {
+  event.preventDefault(); // Prevent form submission
+
+  let scoreInput = document.getElementById("score-input");
+  let newHighScore = scoreInput.value;
+
+  let detailHighScore = document.getElementById("detail-high-score");
+  detailHighScore.textContent = newHighScore;
+
+  scoreInput.value = ""; // Clear the input field
+});
 
       // Display game details for the selected game
       function displayGameDetails(game) {
         let detailImage = document.getElementById("detail-image");
         let detailTitle = document.getElementById("detail-title");
         let detailHighScore = document.getElementById("detail-high-score");
+        let scoreInput = document.getElementById("score-input");
 
         detailImage.src = game.image;
         detailTitle.textContent = game.name;
         detailHighScore.textContent = game.high_score;
+        scoreInput.value = game.high_score; 
       }
 
       // Display all game list items and add click event listener
